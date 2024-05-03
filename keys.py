@@ -1,6 +1,4 @@
 import pygame
-import time
-
 pygame.init()
 
 window_size = (800, 600)
@@ -13,6 +11,9 @@ image_rect = image.get_rect()
 image_2 = pygame.image.load('PyCharmPic.png')
 image_rect_2 = image_2.get_rect()
 
+speed = 1
+
+
 
 run = True
 
@@ -21,14 +22,15 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-        if event.type == pygame.MOUSEMOTION:
-            mouseX, mouseY = pygame.mouse.get_pos()
-            image_rect.x = mouseX - 40
-            image_rect.y = mouseY - 40
-
-        if image_rect.colliderect(image_rect_2):
-            print('произошло столкновение!')
-            time.sleep(1)
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        image_rect.x -= speed
+    if keys[pygame.K_RIGHT]:
+        image_rect.x += speed
+    if keys[pygame.K_UP]:
+        image_rect.y -= speed
+    if keys[pygame.K_DOWN]:
+        image_rect.y += speed
 
     screen.fill((0, 0, 0))
     screen.blit(image, image_rect)
