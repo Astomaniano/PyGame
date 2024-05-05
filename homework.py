@@ -131,7 +131,7 @@ while running:
         enemies.add(Enemy())
 
     # Очистка экрана
-    screen.fill(WHITE)
+    screen.fill((0, 0, 0))
 
     # Рисование спрайтов
     screen.blit(player.image, player.rect)
